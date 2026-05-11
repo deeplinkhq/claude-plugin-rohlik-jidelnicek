@@ -1,0 +1,22 @@
+{
+  "description": "Výchozí hodnoty pro settings.json, pokud uživatel ještě žádné nenastavil.",
+  "max_price_per_day_per_person_czk": 250,
+  "waste_strategy": "trvanlivé potraviny",
+  "default_horizon_days": null,
+  "currency": "CZK",
+  "default_meal_distribution_pct": {
+    "snídaně": 25,
+    "svačina": 10,
+    "oběd": 35,
+    "večeře": 30
+  },
+  "tolerance": {
+    "daily_kcal_pct": 10,
+    "per_meal_kcal_pct": 20,
+    "weekly_avg_kcal_pct": 5
+  },
+  "rohlik": {
+    "country": "cz",
+    "base_url": "https://www.rohlik.cz"
+  }
+}

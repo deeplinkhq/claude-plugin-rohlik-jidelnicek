@@ -1,0 +1,18 @@
+{
+  "name": "meal-prep-rohlik",
+  "version": "0.3.0",
+  "description": "Plánování krabičkové diety s reálnými nutričními daty a cenami z Rohlik.cz. Auto-aktivovaný orchestrátor — uživatel mluví přirozeně, plugin sám pozná, jestli jde o setup maker, plánování, nebo nákup. Maso a ryby vždy 100 % spotřeba (nemrazí se). Optimalizuje odpad, hlídá makra více osob.",
+  "author": {
+    "name": "Filip"
+  },
+  "keywords": [
+    "krabickova-dieta",
+    "meal-prep",
+    "rohlik",
+    "makra",
+    "nutrice",
+    "jidelnicek",
+    "nakupni-seznam",
+    "minimalizace-odpadu"
+  ]
+}
