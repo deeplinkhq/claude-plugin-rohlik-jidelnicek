@@ -1,6 +1,6 @@
 ---
 name: setup-macro-profile
-description: Vytváří, upravuje nebo maže makro profily osob pro krabičkovou dietu. Aktivuj, když uživatel chce nastavit makra, spočítat denní příjem, vytvořit profil, přidat další osobu do plánování, změnit váhu/cíl/aktivitu, nebo když chybí profil potřebný pro jiný workflow. Po dokončení aktualizuje CLAUDE.md.
+description: Vytváří, upravuje nebo maže makro profily osob pro krabičkovou dietu. Aktivuj, když uživatel chce nastavit makra, spočítat denní příjem, vytvořit profil, přidat další osobu do plánování, změnit váhu/cíl/aktivitu, nebo když chybí profil potřebný pro jiný workflow. Po dokončení aktualizuje AGENTS.md.
 ---
 
 # Setup Macro Profile
@@ -117,9 +117,9 @@ A `settings.json` (jen při prvním běhu):
 }
 ```
 
-## Krok 6: Aktualizuj CLAUDE.md
+## Krok 6: Aktualizuj AGENTS.md
 
-**Vždy** po vytvoření / úpravě / smazání profilu aktualizuj managed sekci v `./CLAUDE.md` v projektu. Postup je v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/claude-md-template.md`. Pokud `CLAUDE.md` neexistuje, vytvoř ho.
+**Vždy** po vytvoření / úpravě / smazání profilu aktualizuj managed sekci v `./AGENTS.md` v projektu. Postup je v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/agents-md-template.md`. Pokud `AGENTS.md` neexistuje, vytvoř ho.
 
 ## Krok 7: Potvrď a pokračuj
 
@@ -133,12 +133,12 @@ Pokud uživatel chce smazat profil:
 1. Vypiš, který soubor se chystáš smazat (`.krabickova-dieta/profiles/{jmeno}.json`).
 2. **Vyžaduj explicitní potvrzení** v chatu („Smazat profil {jméno}?").
 3. Po potvrzení použij `rm` přes Bash.
-4. Aktualizuj CLAUDE.md.
+4. Aktualizuj AGENTS.md.
 
 ## Důležité zásady
 
 - **Vše ukládej do `./.krabickova-dieta/`** v pracovní složce uživatele.
 - **Komunikuj česky.**
 - **Bezpečnostní limity** dodržuj striktně.
-- **CLAUDE.md aktualizuj vždy** po změně profilu/settings.
+- **AGENTS.md aktualizuj vždy** po změně profilu/settings.
 - **Mazání vyžaduje potvrzení** v chatu.

@@ -1,11 +1,11 @@
 ---
 name: generate-meal-plan
-description: Sestaví krabičkový jídelníček s makry a nákupním seznamem z Rohlíku. Aktivuj, když uživatel chce naplánovat jídelníček, vytvořit krabičky na týden, navrhnout meal-prep recepty, sestavit menu s ohledem na makra, nebo když popisuje, na co má chuť a chce z toho jídla na několik dní. Po dokončení aktualizuje CLAUDE.md. Hard constraint: maso a ryby se nemrazí — vždy musí být celé spotřebovány v jídelníčku.
+description: "Sestaví krabičkový jídelníček s makry a nákupním seznamem z Rohlíku. Aktivuj, když uživatel chce naplánovat jídelníček, vytvořit krabičky na týden, navrhnout meal-prep recepty, sestavit menu s ohledem na makra, nebo když popisuje, na co má chuť a chce z toho jídla na několik dní. Po dokončení aktualizuje AGENTS.md. Hard constraint: maso a ryby se nemrazí — vždy musí být celé spotřebovány v jídelníčku."
 ---
 
 # Generate Meal Plan
 
-Hlavní workflow plánování. Vždy končí markdown souborem v `.krabickova-dieta/jidelnicky/{datum}.md` a aktualizovanou managed sekcí v `CLAUDE.md`.
+Hlavní workflow plánování. Vždy končí markdown souborem v `.krabickova-dieta/jidelnicky/{datum}.md` a aktualizovanou managed sekcí v `AGENTS.md`.
 
 Pro detaily algoritmů použij další skilly:
 - `@${CLAUDE_PLUGIN_ROOT}/skills/rohlik-product-lookup/SKILL.md` — vyhledávání produktů a cache
@@ -150,13 +150,13 @@ Striktně podle algoritmu v `waste-minimization`:
 
 Zobraz uživateli `computer://...` odkaz na soubor.
 
-## Krok 9: Aktualizuj CLAUDE.md
+## Krok 9: Aktualizuj AGENTS.md
 
-**Vždy** aktualizuj managed sekci v `./CLAUDE.md`:
+**Vždy** aktualizuj managed sekci v `./AGENTS.md`:
 - Datum + horizont nového jídelníčku
 - Aktualizovaný stav cache (počet produktů + nejstarší cena)
 
-Postup je v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/claude-md-template.md`.
+Postup je v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/agents-md-template.md`.
 
 ## Krok 10: Akce — košík nebo shopping list
 
@@ -202,5 +202,5 @@ Každý úspěšně použitý recept ulož do `.krabickova-dieta/cache/recipes.j
 - **Cache-first.**
 - **Atomické zápisy.**
 - **Modifikační akce** (košík, shopping list) **vždy s potvrzením v chatu**.
-- **CLAUDE.md aktualizuj vždy** po vygenerování jídelníčku.
+- **AGENTS.md aktualizuj vždy** po vygenerování jídelníčku.
 - **Komunikuj česky.**

@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    {
+      "source": "meal-prep-rohlik",
+      "destination": "plugin-source",
+      "archive": "meal-prep-rohlik.plugin"
+    }
+  ]
+}

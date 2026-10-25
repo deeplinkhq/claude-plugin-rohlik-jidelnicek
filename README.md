@@ -1,6 +1,6 @@
 # meal-prep-rohlik: krabičkový jídelníček s daty z Rohlik.cz
 
-Plugin pro Claude Cowork, který plánuje krabičkovou dietu (meal prep) s reálnými nutričními hodnotami a cenami produktů z Rohlik.cz. Spočítá makra pro jednu nebo víc osob, sestaví jídelníček na několik dní, dorovná porce na celá balení, aby zbylo co nejmíň odpadu, a připraví nákupní seznam, který na požádání vloží do košíku na Rohlíku. Autor: Filip Oborník. Aktuální verze je 0.3.0.
+Plugin pro Claude Cowork, který plánuje krabičkovou dietu (meal prep) s reálnými nutričními hodnotami a cenami produktů z Rohlik.cz. Spočítá makra pro jednu nebo víc osob, sestaví jídelníček na několik dní, dorovná porce na celá balení, aby zbylo co nejmíň odpadu, a připraví nákupní seznam, který na požádání vloží do košíku na Rohlíku. Autor: Filip Oborník. Aktuální verze je 0.3.1.
 
 ## Jak se používá
 
@@ -21,7 +21,7 @@ Hlavní pravidla pluginu:
 - **Claude Cowork** s nainstalovaným pluginem.
 - **Účet na Rohlik.cz.** Plugin se připojuje k oficiálnímu Rohlík MCP serveru `rohlik-official` (HTTP, `https://mcp.rohlik.cz/mcp`, definovaný v `plugin-source/.mcp.json`). Přes něj hledá produkty, čte nutriční tabulky, slevy a recepty a pracuje s košíkem a shopping listy.
 - **Proměnné prostředí** `ROHLIK_USERNAME` a `ROHLIK_PASSWORD` s přihlašovacími údaji k Rohlik.cz. V Cowork se nastavují v Settings → MCP servery → meal-prep-rohlik. Do repa ani do pluginu se nepíšou.
-- Skilly pracují přes Bash (složky, atomické zápisy cache) a pro úpravu `CLAUDE.md` volají `python3`.
+- Skilly pracují přes Bash (složky, atomické zápisy cache) a pro úpravu `AGENTS.md` volají `python3`.
 
 ## Instalace a první spuštění
 
@@ -40,16 +40,17 @@ Všechno jde do pracovní složky uživatele, ne do složky pluginu. Data tak z�
 ├── cache/products.json     nutriční hodnoty, balení a ceny z Rohlíku
 ├── cache/recipes.json      opakovaně použitelné recepty
 └── jidelnicky/             jídelníčky a nákupní seznamy v Markdownu
-CLAUDE.md                   managed sekce se stavem projektu
+AGENTS.md                   managed sekce se stavem projektu
 ```
 
-V `CLAUDE.md` si plugin udržuje sekci mezi značkami `<!-- meal-prep-rohlik:start -->` a `<!-- meal-prep-rohlik:end -->`: profily, nastavení, poslední jídelníček a stav cache. Díky ní Claude ví, kde projekt skončil, i v nové konverzaci. Obsahu mimo značky se plugin nedotýká.
+V `AGENTS.md` si plugin udržuje sekci mezi značkami `<!-- meal-prep-rohlik:start -->` a `<!-- meal-prep-rohlik:end -->`: profily, nastavení, poslední jídelníček a stav cache. Díky ní Claude ví, kde projekt skončil, i v nové konverzaci. Obsahu mimo značky se plugin nedotýká.
 
 ## Struktura repa
 
 ```
 meal-prep-rohlik.plugin          zabalený plugin k instalaci (ZIP)
-plugin-source/                   zdrojové soubory pluginu
+.agents/plugins/meal-prep-rohlik/ zdrojové soubory pluginu
+plugin-source/                   generovaný instalační payload
 ├── .claude-plugin/plugin.json   manifest: název, verze, popis, klíčová slova
 ├── .mcp.json                    připojení k Rohlík MCP
 ├── README.md                    podrobný popis, architektura a changelog
@@ -59,7 +60,7 @@ plugin-source/                   zdrojové soubory pluginu
 
 | Skill | Typ | K čemu |
 |---|---|---|
-| `meal-prep-orchestrator` | workflow | vstupní bod: zjistí stav, rozpozná záměr, spustí workflow; šablona managed sekce `CLAUDE.md` |
+| `meal-prep-orchestrator` | workflow | vstupní bod: zjistí stav, rozpozná záměr, spustí workflow; šablona managed sekce `AGENTS.md` |
 | `setup-macro-profile` | workflow | založení, úprava a smazání profilu osoby (BMR, TDEE, makra) |
 | `generate-meal-plan` | workflow | návrh jídelníčku, přesná makra z Rohlíku, optimalizace odpadu, cenová kontrola |
 | `build-shopping-list` | workflow | nákupní seznam z hotového jídelníčku s aktuálními cenami, košík nebo shopping list |
@@ -72,12 +73,12 @@ Podrobnosti jsou v `plugin-source/README.md` a v jednotlivých `SKILL.md`.
 
 ## Úpravy a nové sestavení balíčku
 
-Upravuje se jen `plugin-source/`. Soubor `meal-prep-rohlik.plugin` je ZIP, který má v kořeni přímo obsah `plugin-source/` bez nadřazené složky. Po změně ho přegeneruj, například takhle:
+Upravuje se jen `.agents/plugins/meal-prep-rohlik/`. Potom spusť:
 
 ```bash
-cd plugin-source
-rm -f ../meal-prep-rohlik.plugin
-zip -r ../meal-prep-rohlik.plugin . -x '*.DS_Store'
+python3 .agents/scripts/build-plugins.py
+python3 .agents/scripts/build-plugins.py --check
+claude plugin validate plugin-source
 ```
 
-Verze pluginu je v `plugin-source/.claude-plugin/plugin.json`, changelog na konci `plugin-source/README.md`.
+Builder přegeneruje `plugin-source/` a `meal-prep-rohlik.plugin` s fyzickými soubory. ZIP obsahuje přímo instalační payload, bez nadřazeného adresáře a bez symlinků. Verze a changelog se upravují ve zdroji v `.agents/plugins/meal-prep-rohlik/`.

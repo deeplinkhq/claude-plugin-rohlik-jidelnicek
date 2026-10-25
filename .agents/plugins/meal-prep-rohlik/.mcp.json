@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "rohlik-official": {
+      "type": "http",
+      "url": "https://mcp.rohlik.cz/mcp",
+      "headers": {
+        "rhl-email": "${ROHLIK_USERNAME}",
+        "rhl-pass": "${ROHLIK_PASSWORD}"
+      }
+    }
+  }
+}

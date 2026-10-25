@@ -1,0 +1,29 @@
+{
+  "description": "Výchozí seznam základních potravin v české domácnosti. Plugin předpokládá, že uživatel je má doma a neřadí je do nákupního seznamu, dokud uživatel neřekne jinak.",
+  "staples": [
+    { "name": "Sůl", "category": "koření" },
+    { "name": "Pepř černý mletý", "category": "koření" },
+    { "name": "Olivový olej", "category": "tuky" },
+    { "name": "Slunečnicový olej", "category": "tuky" },
+    { "name": "Máslo", "category": "tuky" },
+    { "name": "Cukr krystal", "category": "sladidla" },
+    { "name": "Hladká mouka", "category": "sypké" },
+    { "name": "Hrubá mouka", "category": "sypké" },
+    { "name": "Vejce", "category": "základ" },
+    { "name": "Česnek", "category": "zelenina" },
+    { "name": "Cibule", "category": "zelenina" },
+    { "name": "Ocet", "category": "dochucovadla" },
+    { "name": "Sójová omáčka", "category": "dochucovadla" },
+    { "name": "Hořčice", "category": "dochucovadla" },
+    { "name": "Kečup", "category": "dochucovadla" },
+    { "name": "Rýže (jasmínová/basmati)", "category": "přílohy" },
+    { "name": "Těstoviny", "category": "přílohy" },
+    { "name": "Paprika mletá sladká", "category": "koření" },
+    { "name": "Kmín", "category": "koření" },
+    { "name": "Bobkový list", "category": "koření" },
+    { "name": "Med", "category": "sladidla" },
+    { "name": "Bujon (kostky/granule)", "category": "dochucovadla" },
+    { "name": "Worcester", "category": "dochucovadla" },
+    { "name": "Citron", "category": "ovoce" }
+  ]
+}

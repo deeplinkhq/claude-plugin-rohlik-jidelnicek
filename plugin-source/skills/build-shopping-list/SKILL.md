@@ -1,6 +1,6 @@
 ---
 name: build-shopping-list
-description: Vygeneruje nákupní seznam z existujícího jídelníčku s aktuálními cenami z Rohlíku a volitelně přidá do košíku. Aktivuj, když uživatel žádá nákupní seznam, chce přidat věci do košíku Rohlíku, chce shopping list, nebo se odkazuje na hotový jídelníček a říká „nakup", „pošli na Rohlík", „udělej objednávku". Po dokončení aktualizuje CLAUDE.md.
+description: Vygeneruje nákupní seznam z existujícího jídelníčku s aktuálními cenami z Rohlíku a volitelně přidá do košíku. Aktivuj, když uživatel žádá nákupní seznam, chce přidat věci do košíku Rohlíku, chce shopping list, nebo se odkazuje na hotový jídelníček a říká „nakup", „pošli na Rohlík", „udělej objednávku". Po dokončení aktualizuje AGENTS.md.
 ---
 
 # Build Shopping List
@@ -79,9 +79,9 @@ AskUserQuestion:
 ### Shopping list
 `mcp__rohlik-official__create_shopping_list` + `mcp__rohlik-official__add_products_to_shopping_list`.
 
-## Krok 8: Aktualizuj CLAUDE.md
+## Krok 8: Aktualizuj AGENTS.md
 
-Aktualizuj managed sekci — hlavně počet produktů v cache a nejstarší cena (může se změnit po refresh cen). Postup v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/claude-md-template.md`.
+Aktualizuj managed sekci — hlavně počet produktů v cache a nejstarší cena (může se změnit po refresh cen). Postup v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/agents-md-template.md`.
 
 ## Důležité zásady
 

@@ -29,9 +29,9 @@ Načti rychle (bez výpisu uživateli):
 | Jídelníčky | `.krabickova-dieta/jidelnicky/*.md` | nejnovější datum + horizont |
 | Cache produktů | `.krabickova-dieta/cache/products.json` | počet, nejstarší cena |
 | Cache receptů | `.krabickova-dieta/cache/recipes.json` | počet receptů |
-| CLAUDE.md sekce | `./CLAUDE.md` | obsahuje `<!-- meal-prep-rohlik:start -->`? |
+| AGENTS.md sekce | `./AGENTS.md` | obsahuje `<!-- meal-prep-rohlik:start -->`? |
 
-Pokud `CLAUDE.md` ještě neexistuje, neaktualizuj ho zatím — to udělá `setup-macro-profile` při prvním profilu.
+Pokud `AGENTS.md` ještě neexistuje, neaktualizuj ho zatím — to udělá `setup-macro-profile` při prvním profilu.
 
 ## Krok 1: Klasifikuj intent
 
@@ -71,7 +71,7 @@ Pak hned spusť odpovídající skill — uživatel by měl mít pocit, že se �
 
 ## Krok 4: Po dokončení workflow
 
-Vždy aktualizuj **managed sekci** v `./CLAUDE.md` v projektu (postupem z `references/claude-md-template.md`). Sekce obsahuje:
+Vždy aktualizuj **managed sekci** v `./AGENTS.md` v projektu (postupem z `references/agents-md-template.md`). Sekce obsahuje:
 - Seznam profilů a jejich klíčové parametry
 - Datum a rozsah posledního jídelníčku
 - Stav cache (počet, nejstarší cena)
@@ -113,6 +113,6 @@ Nepokládej víc otázek najednou — to ať udělá až workflow skill, který 
 
 - **Nesnaž se uhádnout** — pokud intent není jasný, raději polož jednu otázku.
 - **Nikdy nezahajuj plný workflow bez splněných předpokladů** — vyřeš dependencies.
-- **Vždy aktualizuj CLAUDE.md** po dokončení workflow.
+- **Vždy aktualizuj AGENTS.md** po dokončení workflow.
 - **Komunikuj česky.**
 - **Buď stručný** — orchestrátor by měl být neviditelný; uživatel chce výsledek, ne report o směrování.

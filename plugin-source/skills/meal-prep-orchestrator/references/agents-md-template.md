@@ -1,6 +1,6 @@
-# CLAUDE.md — managed sekce pro meal-prep-rohlik
+# AGENTS.md — managed sekce pro meal-prep-rohlik
 
-Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci v `CLAUDE.md` v root pracovní složky uživatele.
+Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci v `AGENTS.md` v root pracovní složky uživatele.
 
 ## Pravidla
 
@@ -13,7 +13,7 @@ Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci
 
 2. **Nikdy nesahej** na obsah mimo tyto značky.
 
-3. Pokud `CLAUDE.md` neexistuje — vytvoř ho s touto sekcí.
+3. Před vytvořením souboru zkontroluj starou instalaci: pokud je managed sekce jen v `CLAUDE.md` a `AGENTS.md` neexistuje, přejmenuj celý původní soubor na `AGENTS.md` beze změny ostatních pravidel. Pokud existují oba, starý soubor nemá managed značky nebo je některý instrukční soubor symlink, zastav se s konkrétním požadavkem na sloučení instrukcí; nikdy nevytvářej druhou nezávislou kopii. Když není stará instalace ani `AGENTS.md`, vytvoř ho s touto sekcí.
 
 4. Pokud existuje a sekce v něm **není** — připoj sekci na konec souboru, předem prázdný řádek.
 
@@ -22,36 +22,49 @@ Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci
 ## Bash helper
 
 ```bash
-CLAUDE_MD="./CLAUDE.md"
+AGENT_INSTRUCTIONS="./AGENTS.md"
 START_MARKER="<!-- meal-prep-rohlik:start -->"
 END_MARKER="<!-- meal-prep-rohlik:end -->"
 
-# Vygeneruj nový obsah do souboru .krabickova-dieta/.claude-md-section.tmp
-cat > .krabickova-dieta/.claude-md-section.tmp << 'EOF'
+LEGACY_INSTRUCTIONS="./CLAUDE.md"
+if [ -L "$AGENT_INSTRUCTIONS" ]; then
+  echo "AGENTS.md je symlink. Nejprve určete kanonický soubor pro sloučení instrukcí." >&2
+  exit 1
+fi
+if [ -e "$LEGACY_INSTRUCTIONS" ] || [ -L "$LEGACY_INSTRUCTIONS" ]; then
+  if [ -L "$LEGACY_INSTRUCTIONS" ] || [ ! -f "$LEGACY_INSTRUCTIONS" ] || [ -e "$AGENT_INSTRUCTIONS" ] || ! grep -q "$START_MARKER" "$LEGACY_INSTRUCTIONS" || ! grep -q "$END_MARKER" "$LEGACY_INSTRUCTIONS"; then
+    echo "Nejprve slučte staré CLAUDE.md do AGENTS.md se zachováním projektových pravidel; profil zatím nebyl změněn." >&2
+    exit 1
+  fi
+  mv "$LEGACY_INSTRUCTIONS" "$AGENT_INSTRUCTIONS"
+fi
+
+# Vygeneruj nový obsah do souboru .krabickova-dieta/.agents-md-section.tmp
+cat > .krabickova-dieta/.agents-md-section.tmp << 'EOF'
 <!-- meal-prep-rohlik:start -->
 {managed obsah, viz template níže}
 <!-- meal-prep-rohlik:end -->
 EOF
 
-if [ ! -f "$CLAUDE_MD" ]; then
-  cp .krabickova-dieta/.claude-md-section.tmp "$CLAUDE_MD"
-elif grep -q "$START_MARKER" "$CLAUDE_MD"; then
+if [ ! -f "$AGENT_INSTRUCTIONS" ]; then
+  cp .krabickova-dieta/.agents-md-section.tmp "$AGENT_INSTRUCTIONS"
+elif grep -q "$START_MARKER" "$AGENT_INSTRUCTIONS"; then
   # Nahraď existující sekci (pomocí python3 — sed je křehký na multiline)
   python3 -c "
 import re, sys
-with open('$CLAUDE_MD') as f: content = f.read()
-with open('.krabickova-dieta/.claude-md-section.tmp') as f: new = f.read().rstrip()
+with open('$AGENT_INSTRUCTIONS') as f: content = f.read()
+with open('.krabickova-dieta/.agents-md-section.tmp') as f: new = f.read().rstrip()
 pattern = re.compile(r'<!-- meal-prep-rohlik:start -->.*?<!-- meal-prep-rohlik:end -->', re.DOTALL)
 content = pattern.sub(new, content)
-with open('$CLAUDE_MD', 'w') as f: f.write(content)
+with open('$AGENT_INSTRUCTIONS', 'w') as f: f.write(content)
 "
 else
   # Připoj na konec
-  printf '\n' >> "$CLAUDE_MD"
-  cat .krabickova-dieta/.claude-md-section.tmp >> "$CLAUDE_MD"
+  printf '\n' >> "$AGENT_INSTRUCTIONS"
+  cat .krabickova-dieta/.agents-md-section.tmp >> "$AGENT_INSTRUCTIONS"
 fi
 
-rm .krabickova-dieta/.claude-md-section.tmp
+rm .krabickova-dieta/.agents-md-section.tmp
 ```
 
 ## Šablona obsahu sekce
