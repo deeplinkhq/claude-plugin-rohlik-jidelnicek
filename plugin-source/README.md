@@ -152,9 +152,14 @@ Plugin **vždy potvrdí** před tím, než:
 
 ## Changelog
 
+### 0.3.2
+
+- Texty pluginu bez dlouhých pomlček, autor v manifestu s celým jménem.
+
 ### 0.3.1
 
-- Instrukce pracovní složky jsou v `AGENTS.md`; zdroj pluginu je v `.agents/plugins/meal-prep-rohlik/`.
+- Plugin zapisuje managed sekci do `AGENTS.md` místo `CLAUDE.md`. Starý `CLAUDE.md` se sekcí přejmenuje na `AGENTS.md`; když existují oba soubory, některý je symlink nebo starý nemá značky, zastaví se a požádá o sloučení instrukcí.
+- Zdroj pluginu je v `.agents/plugins/meal-prep-rohlik/`.
 - Instalační payload a ZIP se sestavují s fyzickými soubory.
 
 
@@ -165,7 +170,7 @@ Plugin **vždy potvrdí** před tím, než:
 ### 0.2.0
 - Architektura přepracovaná na **orchestrator + auto-aktivované workflow skilly**. Uživatel už si nemusí pamatovat slash commandy.
 - Přidán `meal-prep-orchestrator` skill - router intent → workflow.
-- Plugin si automaticky udržuje managed sekci v `AGENTS.md` v projektu.
+- Plugin si automaticky udržuje managed sekci v `CLAUDE.md` v projektu.
 - Příkazy `/makra`, `/jidelnicek`, `/nakup` převedené na auto-aktivované skilly. Zachován jen `/cache-info`.
 
 ### 0.1.0
