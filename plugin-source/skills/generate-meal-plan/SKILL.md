@@ -1,6 +1,6 @@
 ---
 name: generate-meal-plan
-description: "Sestaví krabičkový jídelníček s makry a nákupním seznamem z Rohlíku. Aktivuj, když uživatel chce naplánovat jídelníček, vytvořit krabičky na týden, navrhnout meal-prep recepty, sestavit menu s ohledem na makra, nebo když popisuje, na co má chuť a chce z toho jídla na několik dní. Po dokončení aktualizuje AGENTS.md. Hard constraint: maso a ryby se nemrazí — vždy musí být celé spotřebovány v jídelníčku."
+description: "Sestaví krabičkový jídelníček s makry a nákupním seznamem z Rohlíku. Aktivuj, když uživatel chce naplánovat jídelníček, vytvořit krabičky na týden, navrhnout meal-prep recepty, sestavit menu s ohledem na makra, nebo když popisuje, na co má chuť a chce z toho jídla na několik dní. Po dokončení aktualizuje AGENTS.md. Hard constraint: maso a ryby se nemrazí - vždy musí být celé spotřebovány v jídelníčku."
 ---
 
 # Generate Meal Plan
@@ -8,10 +8,10 @@ description: "Sestaví krabičkový jídelníček s makry a nákupním seznamem 
 Hlavní workflow plánování. Vždy končí markdown souborem v `.krabickova-dieta/jidelnicky/{datum}.md` a aktualizovanou managed sekcí v `AGENTS.md`.
 
 Pro detaily algoritmů použij další skilly:
-- `@${CLAUDE_PLUGIN_ROOT}/skills/rohlik-product-lookup/SKILL.md` — vyhledávání produktů a cache
-- `@${CLAUDE_PLUGIN_ROOT}/skills/waste-minimization/SKILL.md` — minimalizace odpadu
-- `@${CLAUDE_PLUGIN_ROOT}/skills/macro-balancing/SKILL.md` — vážení maker
-- `@${CLAUDE_PLUGIN_ROOT}/skills/meal-planning/SKILL.md` — best practices krabičkování
+- `@${CLAUDE_PLUGIN_ROOT}/skills/rohlik-product-lookup/SKILL.md` - vyhledávání produktů a cache
+- `@${CLAUDE_PLUGIN_ROOT}/skills/waste-minimization/SKILL.md` - minimalizace odpadu
+- `@${CLAUDE_PLUGIN_ROOT}/skills/macro-balancing/SKILL.md` - vážení maker
+- `@${CLAUDE_PLUGIN_ROOT}/skills/meal-planning/SKILL.md` - best practices krabičkování
 
 Veškerá komunikace **česky**.
 
@@ -21,10 +21,10 @@ Veškerá komunikace **česky**.
 mkdir -p .krabickova-dieta/profiles .krabickova-dieta/cache .krabickova-dieta/jidelnicky
 ```
 
-1. Profily — `.krabickova-dieta/profiles/*.json`. **Pokud žádný neexistuje**, řekni *„Nejdřív potřebuju aspoň jeden profil."* a spusť skill `setup-macro-profile`. Po jeho dokončení se vrať sem.
-2. Settings — `.krabickova-dieta/settings.json` (max cena/den, pantry, strategie odpadu).
-3. Cache produktů — `.krabickova-dieta/cache/products.json` (pokud chybí, vytvoř `{}`).
-4. Cache receptů — `.krabickova-dieta/cache/recipes.json` (pokud chybí, vytvoř `{}`).
+1. Profily - `.krabickova-dieta/profiles/*.json`. **Pokud žádný neexistuje**, řekni *„Nejdřív potřebuju aspoň jeden profil."* a spusť skill `setup-macro-profile`. Po jeho dokončení se vrať sem.
+2. Settings - `.krabickova-dieta/settings.json` (max cena/den, pantry, strategie odpadu).
+3. Cache produktů - `.krabickova-dieta/cache/products.json` (pokud chybí, vytvoř `{}`).
+4. Cache receptů - `.krabickova-dieta/cache/recipes.json` (pokud chybí, vytvoř `{}`).
 
 ## Krok 1: Zjisti rozsah jídelníčku
 
@@ -36,11 +36,11 @@ AskUserQuestion (max 4 otázky najednou):
 - **Na kolik dní?** 1 / 3 / 5 / 7 / jiné (volný text)
 - **Mají všechny osoby jíst stejné jídlo?** ano (společné vaření, různé porce) / ne (každý své)
 
-**Kolo 2 — chuť a omezení:**
-- **Na co máte tento týden chuť?** (volný text — typ kuchyně, hlavní suroviny, styl)
+**Kolo 2 - chuť a omezení:**
+- **Na co máte tento týden chuť?** (volný text - typ kuchyně, hlavní suroviny, styl)
 - **Něco extra, čemu se vyhnout tento týden?** (volný text, nad rámec profilu)
 - **Vařit ze zbytků z minulého týdne?** ano (vypiš co máš) / ne / přeskočit
-- **Časový limit přípravy:** rychle (do 20 min) / standard (30–45 min) / čas mám (45+)
+- **Časový limit přípravy:** rychle (do 20 min) / standard (30-45 min) / čas mám (45+)
 
 ## Krok 2: Pantry check
 
@@ -57,7 +57,7 @@ Na základě maker, preferencí, počtu jídel:
 
 Pro každý den a chod:
 - **Název receptu**
-- **Stručný popis** (1–2 věty)
+- **Stručný popis** (1-2 věty)
 - **Hlavní ingredience** (zatím odhadem)
 - **Odhadované makra na porci** (kcal | B | S | T)
 - **Doba přípravy**
@@ -98,18 +98,18 @@ Striktně podle algoritmu v `waste-minimization`:
 
 1. Surová potřeba × všechny dny × osoby
 2. Zaokrouhli nahoru na celá balení
-3. **Maso, drůbež a ryby — Hard constraint:** vždy 100 % spotřeba. Pokud balení > potřeba, **musíš** navýšit porce nebo přidat recept (max iterací neplatí, mrazák zakázán). Pokud nejde — vyměň balení nebo recept.
+3. **Maso, drůbež a ryby - Hard constraint:** vždy 100 % spotřeba. Pokud balení > potřeba, **musíš** navýšit porce nebo přidat recept (max iterací neplatí, mrazák zakázán). Pokud nejde - vyměň balení nebo recept.
 4. **Rostlinné suroviny:** iteruj max 5×, cíl < 15 % odpadu / nebo akceptace „pantry surplus" pro trvanlivé.
 5. Loguj každou iteraci stručně (co, proč).
-6. V reportu zobraz kontrolní řádek „Maso a ryby: 100 % spotřebováno ✓" — pokud nesedí, není hotovo.
+6. V reportu zobraz kontrolní řádek „Maso a ryby: 100 % spotřebováno ✓" - pokud nesedí, není hotovo.
 
 ## Krok 7: Cenová kontrola
 
 - Spočítej cenu/den/osobu.
 - Pokud > `settings.max_price_per_day_per_person_czk`:
-  - `mcp__rohlik-official__get_discounted_items` — zlevněné alternativy
+  - `mcp__rohlik-official__get_discounted_items` - zlevněné alternativy
   - Vyměň drahé položky, přepočítej makra
-  - Pokud nelze — informuj uživatele s návrhem (nezvyšuj limit automaticky)
+  - Pokud nelze - informuj uživatele s návrhem (nezvyšuj limit automaticky)
 
 ## Krok 8: Ulož finální markdown
 
@@ -124,14 +124,14 @@ Striktně podle algoritmu v `waste-minimization`:
 - Cena celkem: XXX Kč | Cena/den/osobu: XXX Kč
 - Celkový odpad: X % nákupu
 
-## Den 1 — pondělí
+## Den 1 - pondělí
 
-### Snídaně — {název}
+### Snídaně - {název}
 **Pro {osoba}:** {ingredience s gramáží}
 **Postup:** ...
 **Makra:** kcal | B | S | T
 
-### Oběd — {název}
+### Oběd - {název}
 ...
 
 **Denní součet pro {osoba}:** kcal | B | S | T
@@ -158,7 +158,7 @@ Zobraz uživateli `computer://...` odkaz na soubor.
 
 Postup je v `@${CLAUDE_PLUGIN_ROOT}/skills/meal-prep-orchestrator/references/agents-md-template.md`.
 
-## Krok 10: Akce — košík nebo shopping list
+## Krok 10: Akce - košík nebo shopping list
 
 AskUserQuestion:
 - **Co dál?**
@@ -167,7 +167,7 @@ AskUserQuestion:
   - Stačí mi jen ten dokument
 
 ### Přidat do košíku
-**STOP — vyžaduj explicitní potvrzení v chatu** se souhrnem („Přidám N produktů za X Kč"). Po potvrzení `mcp__rohlik-official__add_items_to_cart`. Zobraz odkaz na košík https://www.rohlik.cz/kosik.
+**STOP - vyžaduj explicitní potvrzení v chatu** se souhrnem („Přidám N produktů za X Kč"). Po potvrzení `mcp__rohlik-official__add_items_to_cart`. Zobraz odkaz na košík https://www.rohlik.cz/kosik.
 
 ### Shopping list
 `mcp__rohlik-official__create_shopping_list({name: "Krabičky {datum}"})` + `mcp__rohlik-official__add_products_to_shopping_list`.

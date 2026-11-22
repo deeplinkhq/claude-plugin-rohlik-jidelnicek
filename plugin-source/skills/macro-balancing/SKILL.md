@@ -5,7 +5,7 @@ description: Vzorce a logika pro výpočet a vyvažování makronutrientů (kcal
 
 # Macro Balancing
 
-## BMR — Mifflin-St Jeor rovnice
+## BMR - Mifflin-St Jeor rovnice
 
 **Muži:**
 ```
@@ -17,7 +17,7 @@ BMR = (10 × hmotnost_kg) + (6.25 × výška_cm) − (5 × věk) + 5
 BMR = (10 × hmotnost_kg) + (6.25 × výška_cm) − (5 × věk) − 161
 ```
 
-## TDEE — celkový denní výdej
+## TDEE - celkový denní výdej
 
 ```
 TDEE = BMR × faktor_aktivity
@@ -26,9 +26,9 @@ TDEE = BMR × faktor_aktivity
 | Úroveň aktivity | Faktor |
 |-----------------|--------|
 | Sedavá (kancelář, minimum pohybu) | 1.2 |
-| Mírně aktivní (cvičení 1–3× týdně) | 1.375 |
-| Aktivní (cvičení 3–5× týdně) | 1.55 |
-| Velmi aktivní (cvičení 6–7× týdně) | 1.725 |
+| Mírně aktivní (cvičení 1-3× týdně) | 1.375 |
+| Aktivní (cvičení 3-5× týdně) | 1.55 |
+| Velmi aktivní (cvičení 6-7× týdně) | 1.725 |
 | Extrémně aktivní (fyzická práce + cvičení) | 1.9 |
 
 ## Cílový kalorický příjem
@@ -44,7 +44,7 @@ TDEE = BMR × faktor_aktivity
 **Bezpečnostní limity:**
 - Pod 1200 kcal/den (ženy) nebo 1500 kcal/den (muži) **nedoporučovat**.
 - Při BMI < 18.5 nedoporučovat hubnutí.
-- Maximální zdravá ztráta váhy ~ 0.7–1 kg/týden.
+- Maximální zdravá ztráta váhy ~ 0.7-1 kg/týden.
 
 ## Rozložení makronutrientů
 
@@ -52,16 +52,16 @@ TDEE = BMR × faktor_aktivity
 
 | Cíl | g/kg tělesné váhy |
 |-----|--------------------|
-| Hubnout (důraz na svaly) | 2.0–2.4 |
-| Udržovat | 1.6–2.0 |
-| Nabírat | 1.8–2.2 |
+| Hubnout (důraz na svaly) | 2.0-2.4 |
+| Udržovat | 1.6-2.0 |
+| Nabírat | 1.8-2.2 |
 
 `1 g bílkoviny = 4 kcal`
 
 ### Tuky
 
 - **Minimum:** 0.8 g/kg (hormonální zdraví, vstřebávání vitaminů A/D/E/K).
-- **Doporučené pásmo:** 25–35 % celkového kalorického příjmu.
+- **Doporučené pásmo:** 25-35 % celkového kalorického příjmu.
 - `1 g tuku = 9 kcal`
 
 ### Sacharidy (vyplňující)
@@ -74,7 +74,7 @@ sacharidy_g = (cílové_kcal − protein_g × 4 − fat_g × 9) / 4
 
 ### Vláknina
 
-- Doporučeno **25–35 g/den**.
+- Doporučeno **25-35 g/den**.
 - Pravidlo palce: ~14 g na každých 1000 kcal.
 
 ## Příklad výpočtu
@@ -99,7 +99,7 @@ Muž, 32 let, 182 cm, 84 kg, aktivní, hubnout mírně:
 | Jednotlivé jídlo | ±20 % očekávaného podílu |
 | Týdenní průměr | ±5 % cíle |
 
-Bílkoviny jsou nejcitlivější — neměly by **klesnout** pod -10 %, ale lehké překročení (+15 %) je OK (zvlášť při hubnutí).
+Bílkoviny jsou nejcitlivější - neměly by **klesnout** pod -10 %, ale lehké překročení (+15 %) je OK (zvlášť při hubnutí).
 
 ### Rozdělení do jídel
 
@@ -129,11 +129,11 @@ Pokud denní makra nesedí, použij **postup od velkých změn k malým**:
 
 Když více osob jí stejné jídlo, ale mají různá makra:
 
-**Strategie A — společné vaření, různé porce.** Vař jednou, navaž do krabiček v různých množstvích. Recept zaznamenává **gramáže pro každou osobu zvlášť**.
+**Strategie A - společné vaření, různé porce.** Vař jednou, navaž do krabiček v různých množstvích. Recept zaznamenává **gramáže pro každou osobu zvlášť**.
 
-**Strategie B — sdílený základ + osobní příloha.** Hlavní složku (kuře, omáčka) máte stejnou, ale příloha se liší (Filip: 200 g rýže; Lucka: 80 g rýže + 200 g salátu).
+**Strategie B - sdílený základ + osobní příloha.** Hlavní složku (kuře, omáčka) máte stejnou, ale příloha se liší (Filip: 200 g rýže; Lucka: 80 g rýže + 200 g salátu).
 
-**Strategie C — úplně jiná jídla.** Když se makra liší extrémně (jeden bulk, druhý cut), generuj zvlášť.
+**Strategie C - úplně jiná jídla.** Když se makra liší extrémně (jeden bulk, druhý cut), generuj zvlášť.
 
 V `/jidelnicek` se zeptej, kterou strategii preferuje. Default = B (rozumný kompromis).
 

@@ -5,8 +5,8 @@ Univerzální „kostry", které jen vyplníš konkrétními ingrediencemi podle
 ## Snídaně
 
 ### S1. Ovesná kaše + ovoce + ořechy
-- 60–80 g ovesné vločky + 250 ml mléko/rostlinné mléko + 100 g ovoce + 15 g ořechy/semena
-- Makra: ~400–500 kcal, B: 15–20 g, S: 60–70 g, T: 12–18 g
+- 60-80 g ovesné vločky + 250 ml mléko/rostlinné mléko + 100 g ovoce + 15 g ořechy/semena
+- Makra: ~400-500 kcal, B: 15-20 g, S: 60-70 g, T: 12-18 g
 
 ### S2. Tvaroh + müsli + ovoce
 - 200 g tvaroh polotučný + 40 g granola + 100 g ovoce + 10 g med
@@ -20,7 +20,7 @@ Univerzální „kostry", které jen vyplníš konkrétními ingrediencemi podle
 - 2 plátky celozrnného chleba + ½ avokádo + 2 vejce + rajče
 - Makra: ~520 kcal, B: 22 g, S: 40 g, T: 28 g
 
-## Oběd / večeře — bowl šablony
+## Oběd / večeře - bowl šablony
 
 ### B1. Kuřecí bowl s rýží a zeleninou
 - 150 g kuřecí prsa + 80 g rýže (suchá) + 200 g pečená zelenina + 15 g olivový olej

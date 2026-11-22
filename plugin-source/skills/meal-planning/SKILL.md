@@ -1,13 +1,13 @@
 ---
 name: meal-planning
-description: Best practices a vzory pro sestavování krabičkového jídelníčku — typické chody, doby přípravy, skladovatelnost, příprava na zásobu. Použij při návrhu jídelníčku, výběru receptů a poradenství kolem meal-prep workflow.
+description: Best practices a vzory pro sestavování krabičkového jídelníčku - typické chody, doby přípravy, skladovatelnost, příprava na zásobu. Použij při návrhu jídelníčku, výběru receptů a poradenství kolem meal-prep workflow.
 ---
 
-# Meal Planning — krabičkový workflow
+# Meal Planning - krabičkový workflow
 
 ## Co je „krabičková dieta"
 
-Vaření jednou (nebo dvakrát) týdně několika receptů ve větších várkách, rozdělení do krabiček a konzumace 3–7 dní. Cílem je úspora času, kontrola maker, méně rozhodovací únavy.
+Vaření jednou (nebo dvakrát) týdně několika receptů ve větších várkách, rozdělení do krabiček a konzumace 3-7 dní. Cílem je úspora času, kontrola maker, méně rozhodovací únavy.
 
 ## Krabičkové vs. ne-krabičkové recepty
 
@@ -24,26 +24,26 @@ Vaření jednou (nebo dvakrát) týdně několika receptů ve větších várká
 - Smažené v trojobalu (zvlhne).
 - Listové saláty s teplým komponentem (zvadnou).
 - Plody moře > 2 dny (kromě konzervovaných).
-- Jemné omáčky s vejcem (hollandaise, carbonara) — riziko.
+- Jemné omáčky s vejcem (hollandaise, carbonara) - riziko.
 - Křupavé těsto / obalovaná zelenina.
 
 ## Doba přípravy a skladovatelnost
 
 | Kategorie | V lednici | V mrazáku |
 |-----------|-----------|-----------|
-| Vařené maso (kuře/krůta) | 3–4 dny | **nemrazit** |
-| Vařené mleté maso | 3–4 dny | **nemrazit** |
+| Vařené maso (kuře/krůta) | 3-4 dny | **nemrazit** |
+| Vařené mleté maso | 3-4 dny | **nemrazit** |
 | Vařené ryby | **2 dny** | **nemrazit** |
-| Vařené luštěniny | 4–5 dní | 6 měsíců |
-| Vařená rýže/těstoviny | 3–5 dní | 1 měsíc |
-| Pečená/dušená zelenina | 3–4 dny | 2–3 měsíce |
-| Polévky bez masa | 3–4 dny | 3 měsíce |
-| Polévky s masem | 3–4 dny | **nemrazit** |
-| Salát-bowl bez dresinku | 2–3 dny | nemrazit |
+| Vařené luštěniny | 4-5 dní | 6 měsíců |
+| Vařená rýže/těstoviny | 3-5 dní | 1 měsíc |
+| Pečená/dušená zelenina | 3-4 dny | 2-3 měsíce |
+| Polévky bez masa | 3-4 dny | 3 měsíce |
+| Polévky s masem | 3-4 dny | **nemrazit** |
+| Salát-bowl bez dresinku | 2-3 dny | nemrazit |
 
-> **Pravidlo domácnosti:** maso, drůbež a ryby se v tomto pluginu **nemrazí** — vždy se musí celé spotřebovat v rámci jídelníčku. Pokud balení neodpovídá potřebě, plugin upraví porce nebo přidá další recept (viz skill `waste-minimization` → Hard constraints). Mraženo může být jen vařené luštěniny, přílohy, zelenina a polévka *bez* masa.
+> **Pravidlo domácnosti:** maso, drůbež a ryby se v tomto pluginu **nemrazí** - vždy se musí celé spotřebovat v rámci jídelníčku. Pokud balení neodpovídá potřebě, plugin upraví porce nebo přidá další recept (viz skill `waste-minimization` → Hard constraints). Mraženo může být jen vařené luštěniny, přílohy, zelenina a polévka *bez* masa.
 
-**Pravidlo palce pro 5–7denní meal-prep:** ryby plánuj na první 2 dny týdne (krátká skladovatelnost), maso na 3.–4. den. Přílohy, polévky a dušenou zeleninu lze vařit jednou na celý týden a část mrazit, pokud je to potřeba.
+**Pravidlo palce pro 5-7denní meal-prep:** ryby plánuj na první 2 dny týdne (krátká skladovatelnost), maso na 3.-4. den. Přílohy, polévky a dušenou zeleninu lze vařit jednou na celý týden a část mrazit, pokud je to potřeba.
 
 ## Workflow
 
@@ -57,7 +57,7 @@ Vaření jednou (nebo dvakrát) týdně několika receptů ve větších várká
 4. **Pánev** (15 min): cibule + paprika + mleté maso na chilli (na 2 dny obědy).
 5. **Mixer / shaker:** ovesná kaše-suchý mix do 5 sklenic; přidá se mléko ráno.
 
-Snídaně typu „granola + jogurt" nebo „omeleta s chlebem" — připravit *ráno* (rychlé, max 10 min).
+Snídaně typu „granola + jogurt" nebo „omeleta s chlebem" - připravit *ráno* (rychlé, max 10 min).
 
 ## Časté chyby
 
@@ -69,6 +69,6 @@ Snídaně typu „granola + jogurt" nebo „omeleta s chlebem" — připravit *r
 
 ## Reference soubory
 
-- `references/pantry-staples.json` — výchozí seznam pantry, který má uživatel typicky doma.
-- `references/defaults.json` — defaultní `settings.json` při prvním běhu.
-- `references/meal-templates.md` — přehled univerzálních „šablon" jídel pro rychlé návrhy.
+- `references/pantry-staples.json` - výchozí seznam pantry, který má uživatel typicky doma.
+- `references/defaults.json` - defaultní `settings.json` při prvním běhu.
+- `references/meal-templates.md` - přehled univerzálních „šablon" jídel pro rychlé návrhy.

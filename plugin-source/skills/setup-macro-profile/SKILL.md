@@ -5,7 +5,7 @@ description: Vytváří, upravuje nebo maže makro profily osob pro krabičkovou
 
 # Setup Macro Profile
 
-Workflow pro správu profilů osob — výpočet BMR/TDEE, cílových kalorií a rozložení makronutrientů. Používá vzorce ze skillu `macro-balancing`. Veškerá komunikace **česky**.
+Workflow pro správu profilů osob - výpočet BMR/TDEE, cílových kalorií a rozložení makronutrientů. Používá vzorce ze skillu `macro-balancing`. Veškerá komunikace **česky**.
 
 Profily se ukládají do **pracovní složky uživatele** (cwd), ne do plugin složky.
 
@@ -28,25 +28,25 @@ Pomocí AskUserQuestion (jen pokud z konverzace není zřejmé):
   - Smazat profil
   - Jen se podívat na aktuální nastavení
 
-Pokud z předchozí konverzace víš (např. orchestrátor tě sem poslal s tím, že profil chybí pro plánování) — přeskoč otázku a rovnou navrhni vytvoření profilu pro hlavního uživatele.
+Pokud z předchozí konverzace víš (např. orchestrátor tě sem poslal s tím, že profil chybí pro plánování) - přeskoč otázku a rovnou navrhni vytvoření profilu pro hlavního uživatele.
 
 ## Krok 2: Sběr údajů (přidat / upravit)
 
 Max 4 otázky najednou.
 
-**Kolo 1 — základ:**
-- **Jméno osoby** (volný text — slouží jako klíč i název souboru, převeď na kebab-case)
+**Kolo 1 - základ:**
+- **Jméno osoby** (volný text - slouží jako klíč i název souboru, převeď na kebab-case)
 - **Pohlaví:** muž / žena
 - **Věk** (let)
 - **Výška** (cm)
 
-**Kolo 2 — váha a aktivita:**
+**Kolo 2 - váha a aktivita:**
 - **Aktuální váha** (kg)
 - **Cílová váha** (kg, volitelné)
 - **Úroveň aktivity:** sedavá / mírně aktivní / aktivní / velmi aktivní / extrémně aktivní
 - **Cíl:** hubnout (mírně) / hubnout (agresivně) / udržovat / nabírat lean / nabírat (bulk)
 
-**Kolo 3 — preference:**
+**Kolo 3 - preference:**
 - **Dietní preference:** bez omezení / bezlepková / bezlaktózová / vegetariánská / veganská (multiSelect: true)
 - **Alergie nebo zakázané potraviny** (volný text, volitelné)
 - **Které chody osoba jí?** snídaně / svačina / oběd / večeře (multiSelect: true)
@@ -68,7 +68,7 @@ Stručně rekapituluj uživateli a zeptej se, jestli chce ručně doladit.
 Pokud `.krabickova-dieta/settings.json` ještě neexistuje, doplň globální nastavení (jednou):
 
 - **Maximální cena/den/osobu** (Kč, default 250)
-- **Pantry** — použít výchozí seznam ze `${CLAUDE_PLUGIN_ROOT}/skills/meal-planning/references/pantry-staples.json` / vybrat ručně
+- **Pantry** - použít výchozí seznam ze `${CLAUDE_PLUGIN_ROOT}/skills/meal-planning/references/pantry-staples.json` / vybrat ručně
 - **Strategie odpadu:** trvanlivé potraviny / levné potraviny / absolutní minimum
 
 ## Krok 5: Ulož profil
@@ -123,7 +123,7 @@ A `settings.json` (jen při prvním běhu):
 
 ## Krok 7: Potvrď a pokračuj
 
-Stručně shrň, co bylo uloženo. Pokud byl tento skill spuštěn jako **dependency** pro jiný workflow (např. orchestrátor tě sem poslal před `generate-meal-plan`), **automaticky pokračuj** do toho workflow — uživatel by neměl muset opakovat původní žádost.
+Stručně shrň, co bylo uloženo. Pokud byl tento skill spuštěn jako **dependency** pro jiný workflow (např. orchestrátor tě sem poslal před `generate-meal-plan`), **automaticky pokračuj** do toho workflow - uživatel by neměl muset opakovat původní žádost.
 
 Pokud byl spuštěn samostatně, řekni: *„Hotovo. Stačí napsat 'naplánuj jídelníček' a sestavím ho podle nového profilu."*
 

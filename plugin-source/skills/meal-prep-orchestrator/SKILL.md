@@ -1,15 +1,15 @@
 ---
 name: meal-prep-orchestrator
-description: Hlavní router pro krabičkovou dietu. Aktivuj se vždy, když uživatel mluví o krabičkách, jídelníčku, meal-prep plánování, makrech, nákupu potravin na týden, vyvažování živin nebo o Rohlíku v souvislosti s plánováním jídel. Zjisti aktuální stav (profily, jídelníčky, cache) a spusť odpovídající workflow — setup-macro-profile, generate-meal-plan nebo build-shopping-list. Komunikuj česky.
+description: Hlavní router pro krabičkovou dietu. Aktivuj se vždy, když uživatel mluví o krabičkách, jídelníčku, meal-prep plánování, makrech, nákupu potravin na týden, vyvažování živin nebo o Rohlíku v souvislosti s plánováním jídel. Zjisti aktuální stav (profily, jídelníčky, cache) a spusť odpovídající workflow - setup-macro-profile, generate-meal-plan nebo build-shopping-list. Komunikuj česky.
 ---
 
 # Meal Prep Orchestrator
 
 Tento skill je **vstupní bod** pro celý workflow krabičkové diety. Uživatel ti řekne přirozenou řečí, co chce ("naplánuj mi jídelníček na týden", "kolik mám jíst bílkovin", "udělej nákup z toho jídelníčku"...) a tvůj úkol je:
 
-1. **Zjistit stav** — co už v projektu existuje
-2. **Rozpoznat intent** — co uživatel chce
-3. **Vyřešit chybějící předpoklady** — pokud něco chybí, doplnit
+1. **Zjistit stav** - co už v projektu existuje
+2. **Rozpoznat intent** - co uživatel chce
+3. **Vyřešit chybějící předpoklady** - pokud něco chybí, doplnit
 4. **Spustit správný workflow skill**
 
 Veškerá komunikace probíhá **česky**.
@@ -31,7 +31,7 @@ Načti rychle (bez výpisu uživateli):
 | Cache receptů | `.krabickova-dieta/cache/recipes.json` | počet receptů |
 | AGENTS.md sekce | `./AGENTS.md` | obsahuje `<!-- meal-prep-rohlik:start -->`? |
 
-Pokud `AGENTS.md` ještě neexistuje, neaktualizuj ho zatím — to udělá `setup-macro-profile` při prvním profilu.
+Pokud `AGENTS.md` ještě neexistuje, neaktualizuj ho zatím - to udělá `setup-macro-profile` při prvním profilu.
 
 ## Krok 1: Klasifikuj intent
 
@@ -67,7 +67,7 @@ Když pokračuješ do workflow, řekni uživateli **jednu větu** o stavu, ať v
 
 > Mám tvůj profil (Filip, hubnout, 2376 kcal/den) a 47 produktů v cache. Pojďme naplánovat jídelníček.
 
-Pak hned spusť odpovídající skill — uživatel by měl mít pocit, že se „prostě stalo, co chtěl".
+Pak hned spusť odpovídající skill - uživatel by měl mít pocit, že se „prostě stalo, co chtěl".
 
 ## Krok 4: Po dokončení workflow
 
@@ -95,7 +95,7 @@ Pokud intent je opravdu nejasný, polož **jednu** otázku přes AskUserQuestion
 > - Vygenerovat jen nákupní seznam
 > - Něco jiného
 
-Nepokládej víc otázek najednou — to ať udělá až workflow skill, který se spustí.
+Nepokládej víc otázek najednou - to ať udělá až workflow skill, který se spustí.
 
 ## Příklady auto-routingu
 
@@ -111,8 +111,8 @@ Nepokládej víc otázek najednou — to ať udělá až workflow skill, který 
 
 ## Důležité zásady
 
-- **Nesnaž se uhádnout** — pokud intent není jasný, raději polož jednu otázku.
-- **Nikdy nezahajuj plný workflow bez splněných předpokladů** — vyřeš dependencies.
+- **Nesnaž se uhádnout** - pokud intent není jasný, raději polož jednu otázku.
+- **Nikdy nezahajuj plný workflow bez splněných předpokladů** - vyřeš dependencies.
 - **Vždy aktualizuj AGENTS.md** po dokončení workflow.
 - **Komunikuj česky.**
-- **Buď stručný** — orchestrátor by měl být neviditelný; uživatel chce výsledek, ne report o směrování.
+- **Buď stručný** - orchestrátor by měl být neviditelný; uživatel chce výsledek, ne report o směrování.

@@ -1,4 +1,4 @@
-# AGENTS.md — managed sekce pro meal-prep-rohlik
+# AGENTS.md - managed sekce pro meal-prep-rohlik
 
 Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci v `AGENTS.md` v root pracovní složky uživatele.
 
@@ -15,9 +15,9 @@ Tento dokument popisuje, jak orchestrátor a workflow skilly **udržují** sekci
 
 3. Před vytvořením souboru zkontroluj starou instalaci: pokud je managed sekce jen v `CLAUDE.md` a `AGENTS.md` neexistuje, přejmenuj celý původní soubor na `AGENTS.md` beze změny ostatních pravidel. Pokud existují oba, starý soubor nemá managed značky nebo je některý instrukční soubor symlink, zastav se s konkrétním požadavkem na sloučení instrukcí; nikdy nevytvářej druhou nezávislou kopii. Když není stará instalace ani `AGENTS.md`, vytvoř ho s touto sekcí.
 
-4. Pokud existuje a sekce v něm **není** — připoj sekci na konec souboru, předem prázdný řádek.
+4. Pokud existuje a sekce v něm **není** - připoj sekci na konec souboru, předem prázdný řádek.
 
-5. Pokud existuje a sekce v něm **je** — přepiš jen obsah mezi značkami.
+5. Pokud existuje a sekce v něm **je** - přepiš jen obsah mezi značkami.
 
 ## Bash helper
 
@@ -49,7 +49,7 @@ EOF
 if [ ! -f "$AGENT_INSTRUCTIONS" ]; then
   cp .krabickova-dieta/.agents-md-section.tmp "$AGENT_INSTRUCTIONS"
 elif grep -q "$START_MARKER" "$AGENT_INSTRUCTIONS"; then
-  # Nahraď existující sekci (pomocí python3 — sed je křehký na multiline)
+  # Nahraď existující sekci (pomocí python3 - sed je křehký na multiline)
   python3 -c "
 import re, sys
 with open('$AGENT_INSTRUCTIONS') as f: content = f.read()
@@ -71,7 +71,7 @@ rm .krabickova-dieta/.agents-md-section.tmp
 
 ```markdown
 <!-- meal-prep-rohlik:start -->
-## Krabičková dieta — kontext projektu
+## Krabičková dieta - kontext projektu
 
 Plugin **meal-prep-rohlik** spravuje v této složce krabičkový jídelníček, makra a nákupní seznamy z Rohlik.cz. Veškerá komunikace probíhá **česky**.
 
@@ -96,16 +96,16 @@ Plugin **meal-prep-rohlik** spravuje v této složce krabičkový jídelníček,
 
 ### Jak se to ovládá
 
-Stačí napsat přirozeně, co chceš — plugin sám pozná, jestli jde o nastavení maker, plánování jídelníčku, nákup, nebo otázku na výpočet. Slash command je jen jeden:
+Stačí napsat přirozeně, co chceš - plugin sám pozná, jestli jde o nastavení maker, plánování jídelníčku, nákup, nebo otázku na výpočet. Slash command je jen jeden:
 
-- `/cache-info` — správa lokální cache (refresh cen, mazání, export)
+- `/cache-info` - správa lokální cache (refresh cen, mazání, export)
 
 ### Pravidla pro Claude
 
 - Nutriční data a ceny **pouze z rohlik.cz** přes MCP `rohlik-official`.
-- **Cache-first** — vždy se podívej do `.krabickova-dieta/cache/products.json` před voláním MCP.
+- **Cache-first** - vždy se podívej do `.krabickova-dieta/cache/products.json` před voláním MCP.
 - **Modifikační akce na Rohlíku** (přidat do košíku, vytvořit shopping list, smazat cache) **vždy s explicitním potvrzením v chatu**.
-- **Maso, drůbež a ryby se nemrazí** — musí být celé spotřebovány v rámci jídelníčku. Pokud balení neodpovídá potřebě, uprav porce nebo přidej recept (viz `waste-minimization` Hard constraints).
+- **Maso, drůbež a ryby se nemrazí** - musí být celé spotřebovány v rámci jídelníčku. Pokud balení neodpovídá potřebě, uprav porce nebo přidej recept (viz `waste-minimization` Hard constraints).
 - Při generování jídelníčku používej skill `meal-planning`, pro vážení maker `macro-balancing`, pro odpad `waste-minimization`, pro produkty `rohlik-product-lookup`.
 <!-- meal-prep-rohlik:end -->
 ```
