@@ -1,6 +1,6 @@
 # meal-prep-rohlik: krabičkový jídelníček s daty z Rohlik.cz
 
-Plugin pro Claude Cowork, který plánuje krabičkovou dietu (meal prep) s reálnými nutričními hodnotami a cenami produktů z Rohlik.cz. Spočítá makra pro jednu nebo víc osob, sestaví jídelníček na několik dní, dorovná porce na celá balení, aby zbylo co nejmíň odpadu, a připraví nákupní seznam, který na požádání vloží do košíku na Rohlíku. Autor: Filip Oborník. Aktuální verze je 0.3.1.
+Plugin pro Claude Cowork, který plánuje krabičkovou dietu (meal prep) s reálnými nutričními hodnotami a cenami produktů z Rohlik.cz. Spočítá makra pro jednu nebo víc osob, sestaví jídelníček na několik dní, dorovná porce na celá balení, aby zbylo co nejmíň odpadu, a připraví nákupní seznam, který na požádání vloží do košíku na Rohlíku. Autor: Filip Oborník. Aktuální verze je 0.3.2.
 
 ## Jak se používá
 

@@ -1,6 +1,6 @@
 ---
 name: rohlik-product-lookup
-description: Vyhledává produkty na Rohlik.cz a kešuje jejich nutriční hodnoty, ceny a velikosti balení. Použij vždy, když je potřeba získat data o potravině z Rohlíku — při sestavování jídelníčku, kontrole cen, generování nákupního seznamu nebo aktualizaci cache.
+description: Vyhledává produkty na Rohlik.cz a kešuje jejich nutriční hodnoty, ceny a velikosti balení. Použij vždy, když je potřeba získat data o potravině z Rohlíku - při sestavování jídelníčku, kontrole cen, generování nákupního seznamu nebo aktualizaci cache.
 ---
 
 # Rohlik Product Lookup
@@ -54,10 +54,10 @@ Plugin používá **oficiální Rohlík MCP server** (`rohlik-official`, HTTP).
 | Tool | Použití |
 |------|---------|
 | `batch_search_products({queries: [...]})` | Najít produkty podle názvů. Vrací seznamy hits s `productId`, `name`, `price`, `pricePerUnit`. |
-| `get_product_details({productId})` | Detail jednoho produktu — cena, popis, balení. |
-| `get_products_composition_batch({productIds: [...]})` | **Klíčové** — nutriční tabulka per 100 g pro až N produktů najednou. |
-| `get_discounted_items()` | Aktuální slevy — užitečné pro „levnější alternativu". |
-| `get_all_user_favorites()` | Oblíbené uživatele — preferuj při generování receptů. |
+| `get_product_details({productId})` | Detail jednoho produktu - cena, popis, balení. |
+| `get_products_composition_batch({productIds: [...]})` | **Klíčové** - nutriční tabulka per 100 g pro až N produktů najednou. |
+| `get_discounted_items()` | Aktuální slevy - užitečné pro „levnější alternativu". |
+| `get_all_user_favorites()` | Oblíbené uživatele - preferuj při generování receptů. |
 | `search_recipes_by_vector_similarity({query})` | Vyhledávání receptů z databáze Rohlíku (vector similarity). |
 | `get_recipe_detail({recipeId})` | Detail receptu z Rohlíku. |
 | `add_items_to_cart({items: [{productId, quantity}]})` | Přidat do košíku (modifikační, vyžaduje potvrzení). |
@@ -102,7 +102,7 @@ echo "$JSON" > "$TMP" && mv "$TMP" "$FINAL"
 
 ## Pouze rohlik.cz
 
-**Nikdy nepoužívej WebFetch ani WebSearch pro získání nutričních dat.** Důvod: konzistence (jiné zdroje mají jiné hodnoty pro stejnou potravinu), aktuálnost, a uživatel kupuje na Rohlíku — chce hodnoty toho konkrétního produktu, ne obecné.
+**Nikdy nepoužívej WebFetch ani WebSearch pro získání nutričních dat.** Důvod: konzistence (jiné zdroje mají jiné hodnoty pro stejnou potravinu), aktuálnost, a uživatel kupuje na Rohlíku - chce hodnoty toho konkrétního produktu, ne obecné.
 
 Pokud produkt na Rohlíku není (zkus 2 alternativní queries než to vzdáš), nabídni uživateli:
 1. **Náhradu** ze stejné kategorie, která na Rohlíku je

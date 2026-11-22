@@ -62,5 +62,5 @@ Zobraz odkaz `computer://...` na soubor.
 - **Cache je v pracovní složce uživatele**, ne v plugin složce.
 - **Komunikuj česky.**
 - **Mazání vyžaduje potvrzení.**
-- **Ceny se mění — refreshuj** před každým novým nákupem.
-- **Nutriční hodnoty jsou stabilní** — refreshuj jen jednou za 30 dní.
+- **Ceny se mění - refreshuj** před každým novým nákupem.
+- **Nutriční hodnoty jsou stabilní** - refreshuj jen jednou za 30 dní.
